@@ -7,7 +7,7 @@
   <li><strong>Modifica dei dati di un lavoratore esistente</strong>: Aggiorna le informazioni di un lavoratore già presente nell'elenco.</li>
   <li><strong>Eliminazione di un lavoratore</strong>: Rimuovi un lavoratore dall'elenco.</li>
 </ul>
-
+ 
 <h2>Funzionalità principali</h2>
 
 <ul>
