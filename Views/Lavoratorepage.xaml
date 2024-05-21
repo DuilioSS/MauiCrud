@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mauicrud.Views.Lavoratorepage"
+             Title="Lavoratorepage"
+             BackgroundColor="#F9F9F9"
+             Padding="20">
+
+    <VerticalStackLayout Spacing="20">
+
+        <ActivityIndicator IsVisible="{Binding Loadingvisibile}"
+                           IsRunning="{Binding Loadingvisibile}"  
+                           Color="#1E88E5"
+                           HeightRequest="30"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+        <Label Text="Nome Completo"
+               FontSize="16"
+               TextColor="#333333"/>
+
+        <Entry Text="{Binding LavoratoreDto.Nomecompleto}"
+               Margin="0,0,0,10"
+               BackgroundColor="White"
+               TextColor="#555555"
+               HeightRequest="40"
+               HorizontalOptions="FillAndExpand"
+               />
+
+        <Label Text="Email"
+               FontSize="16"
+               TextColor="#333333"/>
+
+        <Entry Text="{Binding LavoratoreDto.Email}"
+               Margin="0,0,0,10"
+               BackgroundColor="White"
+               TextColor="#555555"
+               HeightRequest="40"
+               HorizontalOptions="FillAndExpand"/>
+
+        <Label Text="Stipendio"
+               FontSize="16"
+               TextColor="#333333"/>
+
+        <Entry Text="{Binding LavoratoreDto.Stipendio}"
+               Keyboard="Numeric"
+               Margin="0,0,0,10"
+               BackgroundColor="White"
+               TextColor="#555555"
+               HeightRequest="40"
+               HorizontalOptions="FillAndExpand"/>
+
+        <Label Text="Data Contratto"
+               FontSize="16"
+               TextColor="#333333"/>
+
+        <DatePicker Date="{Binding LavoratoreDto.Datacontratto}"
+                    Margin="0,0,0,10"
+                    BackgroundColor="White"
+                    TextColor="#555555"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"/>
+
+        <Button Text="Salva"
+                Command="{Binding SalvaCommand}"
+                BackgroundColor="DarkBlue"
+                TextColor="White"
+                CornerRadius="25"
+                Padding="10, 5"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>

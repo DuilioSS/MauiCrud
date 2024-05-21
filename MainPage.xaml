@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:mauicrud.DTOs"
+             x:Class="mauicrud.MainPage"
+             BackgroundColor="#F9F9F9"
+             Padding="20">
+
+    <Grid RowDefinitions="Auto,Auto,*" RowSpacing="20">
+
+        <Button Grid.Row="0"
+                Text="Nuovo Lavoratore"
+                Command="{Binding CreaCommand}"
+                BackgroundColor="DarkBlue"
+                TextColor="White"
+                CornerRadius="25"
+                Padding="10, 5"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                HorizontalOptions="Center"/>
+
+        <Label Grid.Row="1"
+               Text="Lista Lavoratori"
+               FontSize="24"
+               TextColor="#333333"
+               HorizontalOptions="Center"/>
+
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding Listalavoratore}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LavoratoreDTO">
+                        <Border Padding="15"
+                                BackgroundColor="White"
+                                Stroke="#DDDDDD"
+                                StrokeThickness="1">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                  ColumnDefinitions="*,Auto">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="Nome Completo: "
+                                       FontAttributes="Bold"
+                                       TextColor="#333333"/>
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       Text="{Binding Nomecompleto}"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="Email: "
+                                       FontAttributes="Bold"
+                                       TextColor="#333333"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       Text="{Binding Email}"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="Stipendio: "
+                                       FontAttributes="Bold"
+                                       TextColor="#333333"/>
+                                <Label Grid.Row="2"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       Text="{Binding Stipendio, StringFormat='{0:C}'}"
+                                       TextColor="#555555"/>
+
+                                <Label Grid.Row="3"
+                                       Grid.Column="0"
+                                       Text="Data Contratto: "
+                                       FontAttributes="Bold"
+                                       TextColor="#333333"/>
+                                <Label Grid.Row="3"
+                                       Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       Text="{Binding Datacontratto, StringFormat='{0:dd/MM/yyyy}'}"
+                                       TextColor="#555555"/>
+
+                                <StackLayout Grid.Row="4"
+                                             Grid.ColumnSpan="2"
+                                             Orientation="Horizontal"
+                                             HorizontalOptions="End"
+                                             Spacing="20">
+                                    <Label Text="Modifica"
+                                           TextColor="#1E88E5"
+                                           Padding="5,10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ModificaCommand}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label Text="Elimina"
+                                           TextColor="#E53935"
+                                           Padding="5,10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EliminaCommand}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
